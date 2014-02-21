@@ -294,6 +294,11 @@ elif is_osx: # contribute by progrium and alec
 
     extra_compile_args += ["-Wdeprecated-writable-strings", "-stdlib=libc++"]
 
+    if platform.mac_ver()[0].startswith('10.9'):
+        print("Mavericks FTW")
+        extra_compile_args += ['-std=c++11', '-stdlib=libc++', '-mmacosx-version-min=10.8']
+        extra_link_args += ['-lc++']
+
 else:
     print("ERROR: unsupported OS (%s) and platform (%s)" % (os.name, sys.platform))
 
